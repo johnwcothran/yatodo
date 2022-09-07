@@ -13,13 +13,23 @@ interface ITodoList {
 export const TodoListView = ({
     tasks
 }: ITodoList) => {
-    return <ul>
-        {Object.keys(tasks).map(taskId =>
-            <TodoTaskView key={taskId} {...tasks[taskId]} />)}
-    </ul>
+    return (
+        <div>
+            <ul>
+                {Object.keys(tasks).map(taskId =>
+                    <TodoTaskView key={taskId} {...tasks[taskId]} />)}
+            </ul>
+            <form>
+                <input className="input" type='text' placeholder='Add task...' />
+                <button>Add Task</button>
+            </form>
+        </div>
+    );
 }
 
 export const TodoList = () => {
     const { tasks } = useTasks();
-    return <TodoListView tasks={tasks} />
+    return (
+        <TodoListView tasks={tasks} />
+    );
 }
