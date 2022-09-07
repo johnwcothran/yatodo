@@ -14,7 +14,7 @@ export const useTasks = () => {
     }
     const [tasks, setTasks] = useState<ITasks>({});
     const [addTaskInput, setAddTaskInput] = useState<string>("")
-    const toggleTask = useCallback(() => ({taskId, isComplete}: {taskId: string, isComplete: boolean}) => {
+    const toggleTask = ({taskId, isComplete}: {taskId: string, isComplete: boolean}) => {
         setTasks({
             ...tasks,
             [taskId]: {
@@ -22,14 +22,14 @@ export const useTasks = () => {
                 completed: isComplete
             }
         });
-    }, [])
-    const removeTask = useCallback(({taskId}: {taskId: string}) => {
+    }
+    const removeTask = ({taskId}: {taskId: string}) => {
         const newTaskIds = Object.keys(tasks).filter(tId => tId !== taskId)
         setTasks(newTaskIds.reduce((previousValue, currentValue) => (
             {...previousValue, [currentValue]: tasks[currentValue]}
         ), {}))
-    }, []);
-    const addTask = useCallback((e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
+    };
+    const addTask = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const taskId = uuidv4();
         
@@ -42,11 +42,11 @@ export const useTasks = () => {
             }
         })
         setAddTaskInput("")
-    }, []);
-    const updateAddTaskInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    };
+    const updateAddTaskInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         setAddTaskInput(e.target.value)
-    }, []);
+    };
     
     return {
         tasks,
