@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Yatodo
+This is a basic todo app, demonstrating how logic and visual components can be separated into 
+a easy-to-reason-about pattern by keeping logic in custom hooks. This way, hooks can be effectively
+ unit tested.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
