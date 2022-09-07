@@ -7,11 +7,6 @@ export interface ITasks {
 };
 
 export const useTasks = () => {
-    const initialTasks = {
-        task1: {
-            title: 'Sample Task 1'
-        }
-    }
     const [tasks, setTasks] = useState<ITasks>({});
     const [addTaskInput, setAddTaskInput] = useState<string>("")
     const toggleTask = ({taskId, isComplete}: {taskId: string, isComplete: boolean}) => {
